@@ -10,10 +10,12 @@ book's three figures recreated as accessible inline SVG.
 
 ## Viewing it
 
-Open `index.html` in any browser. The page is fully self-contained (no external fonts,
-scripts, or stylesheets), so it also works directly on GitHub Pages: enable Pages for this
-branch and the site is served from the repository root.
+Open `index.html` in any browser. The site uses no external fonts, scripts, or CDN
+resources, so it also works directly on GitHub Pages: enable Pages for this branch and
+the site is served from the repository root.
 
 ## Structure
 
-- `index.html` — the entire site: content, styles, and inline SVG figures
+- `index.html` — the book: the compact edition's content with inline SVG figures
+- `proposal.html` — the book proposal: hook, positioning, author, audience, chapter outline, platform
+- `style.css` — the shared design system (Anthropic-style tokens, cards, figures, tables)
