@@ -1,19 +1,19 @@
-# 🎈 Blank app template
+# The Metabolic Imperative — Website
 
-A simple Streamlit app template for you to modify!
+A single-page website for *The Metabolic Imperative: Why Organizations Die, and What It Costs
+to Stop Them*, designed in the visual language of [anthropic.com](https://www.anthropic.com/):
+warm cream surfaces, serif display type, clay accents, and generous spacing.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+The site presents the book's framework — the three metabolic states, the five vital signs,
+the six board readings, the Client Paradox, the Governor models, and the protocols — with the
+book's three figures recreated as accessible inline SVG.
 
-### How to run it on your own machine
+## Viewing it
 
-1. Install the requirements
+Open `index.html` in any browser. The page is fully self-contained (no external fonts,
+scripts, or stylesheets), so it also works directly on GitHub Pages: enable Pages for this
+branch and the site is served from the repository root.
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+## Structure
 
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+- `index.html` — the entire site: content, styles, and inline SVG figures
