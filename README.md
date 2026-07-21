@@ -18,4 +18,7 @@ the site is served from the repository root.
 
 - `index.html` — the book: the compact edition's content with inline SVG figures
 - `proposal.html` — the book proposal: hook, positioning, author, audience, chapter outline, platform
-- `style.css` — the shared design system (Anthropic-style tokens, cards, figures, tables)
+- `dashboard.html` — the interactive Metabolic Dashboard: score the five vital signs, see the board
+  readings and suggested protocol, with dual-reviewer gap detection; includes the "Get the book /
+  work with us" offers section
+- `style.css` — the shared design system (Anthropic-style tokens, cards, figures, tables, tool controls)

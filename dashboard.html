@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Metabolic Dashboard — The Metabolic Imperative</title>
+<meta name="description" content="Score the five vital signs, see the board readings the scores produce, and get the protocol the framework suggests — with dual-reviewer gap detection.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html">The Metabolic Imperative</a>
+    <div class="nav-links">
+      <a href="index.html">The Book</a>
+      <a href="index.html#diagnosis">The Framework</a>
+      <a href="proposal.html">The Proposal</a>
+      <a href="#work">Work With Us</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="eyebrow">The instrument · free diagnostic</div>
+  <h1>The Metabolic Dashboard</h1>
+  <p class="hero-sub">Score the five vital signs. See what the board is telling you.</p>
+  <div class="hero-epigraph">
+    The number does not make the judgment objective. It makes the judgment arguable — and the disagreement
+    it provokes is worth more than the score itself.
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="part-label">Run the diagnosis</div>
+    <h2>Five variables, scored against the book's anchors</h2>
+    <p class="lede quiet">Score alone first. Then enable the second reviewer, have a colleague score
+    independently — no discussion — and argue any gap, not the average.</p>
+
+    <div class="tool-layout">
+      <div class="tool-panel">
+        <h4>The vital signs</h4>
+        <p class="hint">Anchors are in <a href="index.html#diagnosis">Chapter 2</a>. Score what the evidence
+        supports, not what the story needs.</p>
+        <div class="toggle-row">
+          <input type="checkbox" id="dualToggle">
+          <label for="dualToggle">Second reviewer (independent scoring — no conferring)</label>
+        </div>
+        <div id="sliders"></div>
+      </div>
+
+      <div>
+        <div class="tool-panel">
+          <h4>The board</h4>
+          <p class="hint">A reading is not a verdict; it is a prompt with a direction.</p>
+          <div class="result-state" id="stateLine">—</div>
+          <p class="result-sub" id="stateSub"></p>
+          <div class="chips" id="readings"></div>
+          <div class="proto-box">
+            <div class="proto-name" id="protoName">Protocol</div>
+            <div class="proto-title" id="protoTitle">—</div>
+            <p id="protoText"></p>
+          </div>
+          <div class="proto-box" id="gapBox" style="display:none;">
+            <div class="proto-name">The instrument</div>
+            <div class="proto-title">Argue the gap, not the average</div>
+            <p id="gapText"></p>
+          </div>
+          <p class="tool-disclaimer">These scores are anchored judgments, not measurements — treat every
+          reading as the opening of an argument, not the settling of one. Never tie compensation to this
+          dashboard. Anyone's. Ever.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="part-label">Get the book · work with us</div>
+    <h2>Three ways in</h2>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag">Read</span>
+        <h4>The compact edition</h4>
+        <div class="offer-price">Free <small>· on this site</small></div>
+        <p>The full framework — three states, five vital signs, six board readings, the protocols — in a
+        ~25,000-word compact edition you can read in an evening.</p>
+        <a class="btn btn-ghost" href="index.html">Start reading</a>
+      </div>
+      <div class="card">
+        <span class="tag">Own</span>
+        <h4>The full edition</h4>
+        <div class="offer-price">On request <small>· complete manuscript</small></div>
+        <p>The full manuscript with the extended case studies, the step-by-step protocol checklists
+        (Appendix B), and the installation schedule. Request a copy and we'll reply with details.</p>
+        <a class="btn btn-primary" href="mailto:kamilkhalil328@gmail.com?subject=The%20Metabolic%20Imperative%20—%20full%20edition%20request">Request the full edition</a>
+      </div>
+      <div class="card">
+        <span class="tag">Install</span>
+        <h4>Advisory &amp; installation</h4>
+        <div class="offer-price">Engagement <small>· scoped per organization</small></div>
+        <p>We install the framework in your organization: dual-reviewer dashboard cadence, the Governor
+        model fitted to your size, the failure-audit ritual, and a 90-day installation plan.</p>
+        <a class="btn btn-primary" href="mailto:kamilkhalil328@gmail.com?subject=Metabolic%20advisory%20—%20installation%20inquiry">Start a conversation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fin">A dashboard no one is paid on, <em>scored by two people who do not confer.</em></div>
+    <p class="foot-meta">The Metabolic Dashboard is the companion instrument to The Metabolic Imperative.
+    &nbsp;·&nbsp; <a href="index.html">The book</a> &nbsp;·&nbsp; <a href="proposal.html">The proposal</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var VARS = [
+    { id: 'potential',  name: 'Potential',              min: 1,  max: 10, step: 0.5, init: 6,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'velocity',   name: 'Velocity',               min: -3, max: 3,  step: 0.5, init: -0.5, words: { '-3': 'Collapse', '-2': 'Decline', '-1': 'Erosion', 0: 'Flat', 1: 'Improvement', 2: 'Compounding', 3: 'Escape' } },
+    { id: 'buffer',     name: 'Buffer',                 min: 1,  max: 10, step: 0.5, init: 4,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'floor',      name: 'Floor',                  min: 1,  max: 10, step: 0.5, init: 5,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'consumer',   name: 'Legitimacy — Consumer',  min: 1,  max: 10, step: 0.5, init: 7,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'market',     name: 'Legitimacy — Market',    min: 1,  max: 10, step: 0.5, init: 5,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'regulatory', name: 'Legitimacy — Regulatory', min: 1, max: 10, step: 0.5, init: 8,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } },
+    { id: 'internal',   name: 'Legitimacy — Internal',  min: 1,  max: 10, step: 0.5, init: 6,    words: { 2: 'Critical', 4: 'At-risk', 6: 'Stable', 8: 'Strong', 10: 'Generative' } }
+  ];
+
+  var READINGS = [
+    { id: 'quiet',   name: 'The Quiet Death',           test: function (s) { return s.potential >= 7 && s.velocity < 0; },
+      note: 'High Potential, negative Velocity — every number except one says you are winning.' },
+    { id: 'gilded',  name: 'The Gilded Trap',           test: function (s) { return s.buffer >= 7 && s.floor <= 4; },
+      note: 'Strong Buffer, weak Floor — cash-rich and structurally unable to shrink.' },
+    { id: 'hollow',  name: 'The Hollow Board',          test: function (s) { return Math.min(s.consumer, s.market, s.regulatory) >= 6 && s.internal <= 5; },
+      note: 'External channels strong, Internal sliding — your own people reprice you first.' },
+    { id: 'vector',  name: 'Velocity Without a Vector', test: function (s) { return s.velocity > 0 && s.market <= 4; },
+      note: 'Motion the environment is not buying. Speed is only a virtue in a direction.' },
+    { id: 'founder', name: "The Founder's Board",       test: function (s) { return s.potential >= 5 && s.potential <= 6.5 && s.velocity < 0 && s.velocity >= -1 && s.buffer <= 4.5 && s.floor >= 4 && s.floor <= 6; },
+      note: 'Nothing on it forces action; everything on it permits decline.' }
+  ];
+
+  var sliders = document.getElementById('sliders');
+  var dual = document.getElementById('dualToggle');
+
+  VARS.forEach(function (v) {
+    var row = document.createElement('div');
+    row.className = 'slider-row';
+    row.innerHTML =
+      '<div class="slider-head"><label for="' + v.id + '_a">' + v.name + '</label>' +
+      '<span class="anchor-word" id="' + v.id + '_word"></span></div>' +
+      '<div class="slider-pair"><input type="range" id="' + v.id + '_a" min="' + v.min + '" max="' + v.max +
+      '" step="' + v.step + '" value="' + v.init + '" aria-label="' + v.name + ' — reviewer A">' +
+      '<span class="val" id="' + v.id + '_a_val"></span></div>' +
+      '<div class="slider-pair b-row" id="' + v.id + '_b_row" hidden>' +
+      '<input type="range" id="' + v.id + '_b" min="' + v.min + '" max="' + v.max +
+      '" step="' + v.step + '" value="' + v.init + '" aria-label="' + v.name + ' — reviewer B">' +
+      '<span class="val" id="' + v.id + '_b_val"></span></div>' +
+      '<div class="gap-flag" id="' + v.id + '_gap"></div>';
+    sliders.appendChild(row);
+  });
+
+  function anchorWord(v, x) {
+    if (v.id === 'velocity') {
+      var k = x < 0 ? String(Math.ceil(x)) : String(Math.floor(x));
+      if (x < 0 && x > -1) k = '-1';
+      return v.words[k] || '';
+    }
+    var band = Math.min(10, 2 * Math.ceil(x / 2));
+    return v.words[band] || '';
+  }
+
+  function fmt(x) { return (x > 0 && arguments[1] === 'vel' ? '+' : '') + x; }
+
+  function scores(suffix) {
+    var s = {};
+    VARS.forEach(function (v) { s[v.id] = parseFloat(document.getElementById(v.id + '_' + suffix).value); });
+    return s;
+  }
+
+  function classify(s) {
+    var legit = [s.consumer, s.market, s.regulatory, s.internal];
+    var weakChannels = legit.filter(function (x) { return x <= 4; }).length;
+    // Protocol C is a conjunction: Buffer at/below Floor level AND negative Velocity AND >=2 legitimacy channels failing
+    if (s.buffer <= 3 && s.velocity < 0 && weakChannels >= 2) {
+      return { proto: 'C', title: 'Restructuring', state: 'Frozen — or nearly',
+        text: 'All three triggers hold jointly. Sever non-essential components, migrate the core to a leaner architecture, rebuild from the reduced base. Protocol C is not bankruptcy — it is the release of the metabolic organization trapped inside the frozen one.' };
+    }
+    if (s.velocity < 0 && (s.buffer <= 5 || weakChannels >= 1)) {
+      return { proto: 'B', title: 'Stabilization', state: 'Reactive — trending toward frozen',
+        text: 'Freeze growth and hiring, cut operating expense 15–30%, extend runway, monitor daily. Exit when Potential stabilizes and Buffer clears the Floor by a margin; if not stabilized in 90 days, escalate. Executed before the market forces it — while the room can still accuse you of losing your nerve.' };
+    }
+    if (s.velocity < 0) {
+      return { proto: 'B', title: 'Stabilization (watch)', state: 'Reactive',
+        text: 'Velocity is negative but buffers hold. The default says stabilize — and the default is not a law: sometimes negative Velocity calls for investment, not retrenchment. The Governor’s real job is to know when the default is wrong.' };
+    }
+    return { proto: 'A', title: 'Routine Maintenance', state: 'Metabolic — if you keep paying for it',
+      text: 'Monitor weekly, audit every significant deviation, hold buffers at target, invest a fixed 20% in exploratory capability. In Protocol A, discipline is the objective, not growth. This is the hardest thing to believe when nothing is on fire.' };
+  }
+
+  function render() {
+    var dualOn = dual.checked;
+    var a = scores('a');
+
+    VARS.forEach(function (v) {
+      var av = a[v.id];
+      var aEl = document.getElementById(v.id + '_a_val');
+      aEl.textContent = (dualOn ? 'A ' : '') + (v.id === 'velocity' && av > 0 ? '+' : '') + av;
+      aEl.className = 'val' + (av < 0 ? ' neg' : '');
+      document.getElementById(v.id + '_word').textContent = anchorWord(v, av);
+      document.getElementById(v.id + '_b_row').hidden = !dualOn;
+      var gapEl = document.getElementById(v.id + '_gap');
+      if (dualOn) {
+        var bv = parseFloat(document.getElementById(v.id + '_b').value);
+        var bEl = document.getElementById(v.id + '_b_val');
+        bEl.textContent = 'B ' + (v.id === 'velocity' && bv > 0 ? '+' : '') + bv;
+        bEl.className = 'val' + (bv < 0 ? ' neg' : '');
+        var gap = Math.abs(av - bv);
+        var threshold = v.id === 'velocity' ? 1.5 : 2;
+        if (gap > threshold) {
+          gapEl.textContent = 'Gap of ' + gap + ' — the most important data point in the room. You are watching different evidence.';
+          gapEl.className = 'gap-flag on';
+        } else { gapEl.className = 'gap-flag'; }
+      } else { gapEl.className = 'gap-flag'; }
+    });
+
+    var result = classify(a);
+    var stateLine = document.getElementById('stateLine');
+    stateLine.innerHTML = result.proto === 'A' ? result.state
+      : '<span class="crimson-text">' + result.state + '</span>';
+    var legitVals = { Consumer: a.consumer, Market: a.market, Regulatory: a.regulatory, Internal: a.internal };
+    var binding = Object.keys(legitVals).sort(function (x, y) { return legitVals[x] - legitVals[y]; })[0];
+    document.getElementById('stateSub').textContent =
+      'Binding legitimacy constraint: ' + binding + ' (' + legitVals[binding] + '). The lowest channel binds.';
+
+    var chips = document.getElementById('readings');
+    chips.innerHTML = '';
+    var any = false;
+    READINGS.forEach(function (r) {
+      if (r.test(a)) {
+        any = true;
+        var c = document.createElement('span');
+        c.className = 'chip on';
+        c.textContent = r.name;
+        c.title = r.note;
+        chips.appendChild(c);
+      }
+    });
+    if (!any) {
+      var c = document.createElement('span');
+      c.className = 'chip good';
+      c.textContent = 'No named death pattern on the board';
+      chips.appendChild(c);
+    }
+
+    document.getElementById('protoName').textContent = 'Protocol ' + result.proto;
+    document.getElementById('protoTitle').textContent = result.title;
+    document.getElementById('protoText').textContent = result.text;
+
+    var gapBox = document.getElementById('gapBox');
+    if (dualOn) {
+      var b = scores('b');
+      var gaps = VARS.filter(function (v) {
+        return Math.abs(a[v.id] - b[v.id]) > (v.id === 'velocity' ? 1.5 : 2);
+      }).map(function (v) { return v.name; });
+      if (gaps.length) {
+        gapBox.style.display = '';
+        document.getElementById('gapText').textContent =
+          'Large gaps on: ' + gaps.join(', ') + '. Do not average them. The goal of the argument is to make both underlying theories of the organization explicit enough to test.';
+      } else {
+        gapBox.style.display = '';
+        document.getElementById('gapText').textContent =
+          'Reviewers land close on every variable. Remember: a framework that produces perfect agreement produces nothing — if you already see the same thing, you did not need the instrument today.';
+      }
+    } else { gapBox.style.display = 'none'; }
+  }
+
+  sliders.addEventListener('input', render);
+  dual.addEventListener('change', render);
+  render();
+})();
+</script>
+
+</body>
+</html>
