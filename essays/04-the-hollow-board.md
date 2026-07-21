@@ -29,4 +29,4 @@ If your Glassdoor is diverging from your press coverage, believe your Glassdoor.
 ---
 
 *This series draws from* The Metabolic Imperative: Why Organizations Die, and What It Costs to Stop Them. *Read the compact edition free, and score your own board on the interactive dashboard:*
-**https://kamilwhkhalil-droid.github.io/blank-app/**
+**[SITE LINK — insert before posting]**

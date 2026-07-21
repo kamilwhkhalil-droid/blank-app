@@ -28,4 +28,4 @@ The board cannot make the decision for you. It can only make the decision *argua
 ---
 
 *This series draws from* The Metabolic Imperative: Why Organizations Die, and What It Costs to Stop Them. *Read the compact edition free, and score your own board on the interactive dashboard:*
-**https://kamilwhkhalil-droid.github.io/blank-app/**
+**[SITE LINK — insert before posting]**

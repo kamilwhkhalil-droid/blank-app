@@ -20,9 +20,13 @@ Essay 6 is the one that sells: it is the only one where the reader is the case s
 
 ## Before posting
 
-1. **Publish the site first** (GitHub Pages), and confirm the URL. Every essay ends with
-   `https://kamilwhkhalil-droid.github.io/blank-app/` — if your Pages URL differs (custom
-   domain, renamed repo), find-and-replace it across all six files.
+1. **Publish the site first, under a name-free URL.** Every essay ends with the placeholder
+   `[SITE LINK — insert before posting]` — replace it across all six files once the site is
+   live. Note that the default GitHub Pages URL contains your GitHub username; for a URL with
+   no name in it, use a custom domain on Pages, or host on Netlify/Vercel with a neutral
+   subdomain. The dashboard's two contact buttons likewise use the placeholder
+   `your-contact-address@example.com` — swap in an anonymous address (e.g. a book-branded
+   inbox) before launch.
 2. **LinkedIn:** paste the body without the `#` heading (LinkedIn has no markdown headers;
    the first line becomes the hook). Keep the line breaks — white space is what makes long
    LinkedIn posts readable. Put the link in the post body, not the first comment, unless
