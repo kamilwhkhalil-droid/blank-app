@@ -1,15 +1,10 @@
 # Launch checklist
 
-The site is complete and name-free. Two placeholders remain, by design. This file is the
-exact path from here to live.
+The site is complete, name-free, and has no payment or contact plans — it is a free
+reading site: the compact edition, the proposal, and the interactive dashboard.
+One placeholder remains (the essay link). This file is the exact path from here to live.
 
-## 1. Create the anonymous inbox (~2 minutes)
-
-Create a book-branded email address with no personal name in it, e.g.
-`metabolicimperative@gmail.com` or `readings@<your-domain>`. This receives the
-full-edition requests and advisory inquiries.
-
-## 2. Buy the domain (~10 minutes)
+## 1. Buy the domain (~10 minutes)
 
 Any registrar (Namecheap, Cloudflare, Porkbun). Something like `metabolicimperative.com`.
 
@@ -25,33 +20,28 @@ Then connect it to GitHub Pages:
 4. Back in Pages settings, tick **Enforce HTTPS** once the certificate is issued
    (can take up to an hour).
 
-The visible URL is then your domain; the username never appears in it.
+The visible URL is then your domain; the username never appears in it. (Renaming the
+GitHub account to something neutral also removes the name from the repo itself.)
 
-## 3. Swap the placeholders (~1 minute)
+## 2. Fill in the essay link (~1 minute)
 
-Two strings, three files-worth of occurrences:
+The six essays end with the placeholder `[SITE LINK — insert before posting]`:
 
 ```bash
-# the contact address (dashboard.html, 2 occurrences)
-grep -rl 'your-contact-address@example.com' . | xargs sed -i 's/your-contact-address@example.com/NEW_ADDRESS/g'
-
-# the site link in the essays (6 occurrences)
 grep -rl 'SITE LINK — insert before posting' essays | xargs sed -i 's|\[SITE LINK — insert before posting\]|https://YOUR_DOMAIN/|g'
 ```
 
-Or just reply in the Claude session with the address and domain, and it gets done for you.
+Or just reply in the Claude session with the domain, and it gets done for you.
 
-## 4. Go live
+## 3. Go live
 
 - Commit and push; Pages redeploys automatically.
 - Post essay 1 (`essays/01-the-quiet-death.md`) per `essays/POSTING-GUIDE.md`.
-- When ready to charge for the full edition: create a payment link (Gumroad /
-  Lemon Squeezy / Stripe) and swap it in for the "Request the full edition" mailto.
 
 ## Privacy note
 
 The repository itself is under your GitHub account; if the repo is public, the
-username is visible to anyone who inspects the repo (not the site). For complete
-separation, mirror the four site files (`index.html`, `proposal.html`,
-`dashboard.html`, `style.css`) to a repo under a fresh anonymous account and point
-Pages + the domain there instead.
+username is visible to anyone who inspects the repo (not the site). Renaming the
+account (GitHub → Settings → Account → Change username) fixes this in place; a
+fresh anonymous account with the site files mirrored to it is the fuller
+separation.
