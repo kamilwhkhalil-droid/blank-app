@@ -45,6 +45,15 @@ def test_invalid_sma_windows_show_error(synthetic_prices):
     assert any("Fast SMA" in e.value for e in at.error)
 
 
+def test_strategy_selector_switches_strategies(synthetic_prices):
+    at = _run_app()
+    for name in ["Momentum", "RSI mean reversion"]:
+        at.sidebar.selectbox[0].select(name)
+        at.run()
+        assert not at.exception, f"{name} raised"
+        assert len(at.metric) == 4
+
+
 def test_support_link_hidden_by_default_and_shown_when_configured(
     synthetic_prices, monkeypatch
 ):
