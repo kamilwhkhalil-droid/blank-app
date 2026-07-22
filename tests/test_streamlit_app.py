@@ -45,6 +45,18 @@ def test_invalid_sma_windows_show_error(synthetic_prices):
     assert any("Fast SMA" in e.value for e in at.error)
 
 
+def test_support_link_hidden_by_default_and_shown_when_configured(
+    synthetic_prices, monkeypatch
+):
+    monkeypatch.delenv("SUPPORT_URL", raising=False)
+    at = _run_app()
+    assert not any("Support this project" in m.value for m in at.markdown)
+
+    monkeypatch.setenv("SUPPORT_URL", "https://example.com/pay")
+    at = _run_app()
+    assert any("https://example.com/pay" in m.value for m in at.markdown)
+
+
 def test_fetch_failure_shows_friendly_error(monkeypatch):
     def boom(ticker, years=25):
         raise RuntimeError("network down")

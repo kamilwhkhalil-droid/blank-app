@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import streamlit as st
 
@@ -85,6 +87,23 @@ with st.expander("Drawdown"):
         }
     )
     st.line_chart(drawdowns, height=280)
+
+def _support_url() -> str:
+    """Payment/donation link, configured via env var or Streamlit secrets.
+
+    Hidden entirely until one is set, so the app never shows a dead link.
+    """
+    url = os.environ.get("SUPPORT_URL", "")
+    if url:
+        return url
+    try:
+        return st.secrets.get("SUPPORT_URL", "")
+    except Exception:
+        return ""
+
+
+if _support_url():
+    st.markdown(f"☕ **[Support this project]({_support_url()})** — keeps it free.")
 
 st.caption(
     "Educational tool, not investment advice. Backtests overstate live "
